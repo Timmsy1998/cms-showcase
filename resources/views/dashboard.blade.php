@@ -16,10 +16,7 @@
             <div class="col-md-6">
                 <h2>Manage Content:</h2>
                 <div class="list-group">
-                    <!-- Replace these links with the actual routes for managing content -->
-                    <a href="#" class="list-group-item list-group-item-action">Manage Articles</a>
-                    <a href="#" class="list-group-item list-group-item-action">Manage Categories</a>
-                    <a href="#" class="list-group-item list-group-item-action">Manage Tags</a>
+                    <a href="/articles" class="list-group-item list-group-item-action">Manage Articles</a>
                 </div>
             </div>
         </div>
