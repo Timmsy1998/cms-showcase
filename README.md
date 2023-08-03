@@ -6,8 +6,9 @@ This is a showreel project to show my skills as a Laravel Backend Developer
 
 ## Tech Stack
 
-- Laravel 10
-- MySQL Database
+- Laravel 10: A server-side PHP MVC framework for building web applications
+- MySQL: A relational database management system (RDBMS) for storing and retrieving data
+- Bootstrap 5: A frontend framework for building responsive and mobile-friendly layouts
 
 ## Installation
 
