@@ -6,8 +6,6 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
-use App\Models\Activity;
-
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -19,14 +17,16 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        ArticleCreated::class => [
-            LogArticleCreatedActivity::class,
+
+        // Article Events
+        'App\Events\ArticleCreated' => [
+            'App\Listeners\LogArticleCreatedActivity',
         ],
-        ArticleUpdated::class => [
-            LogArticleUpdatedActivity::class,
+        'App\Events\ArticleUpdated' => [
+            'App\Listeners\LogArticleUpdatedActivity',
         ],
-        ArticleDeleted::class => [
-            LogArticleDeletedActivity::class,
+        'App\Events\ArticleDeleted' => [
+            'App\Listeners\LogArticleDeletedActivity',
         ],
     ];
 
@@ -35,7 +35,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        parent::boot();
     }
 
     /**
