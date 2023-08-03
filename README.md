@@ -31,8 +31,8 @@ Then Migrate the Database
     
 ## Screenshots
 
-![Login Page](https://i.imgur.com/ZUENNu8.png =468x300)
-![Registration Page](https://i.imgur.com/X7oox5E.png =468x300)
-![User Dashboard](https://i.imgur.com/VnRYjyI.png =468x300)
-![Articles 1](https://i.imgur.com/RCIaTZ8.png =468x300)
-![Articles 2](https://i.imgur.com/8FARTo3.png =468x300)
+<img src="https://i.imgur.com/ZUENNu8.png" alt="Login Page" width="468" height="300">
+<img src="https://i.imgur.com/X7oox5E.png" alt="Registration Page" width="468" height="300">
+<img src="https://i.imgur.com/VnRYjyI.png" alt="User Dashboard" width="468" height="300">
+<img src="https://i.imgur.com/RCIaTZ8.png" alt="Articles 1" width="468" height="300">
+<img src="https://i.imgur.com/8FARTo3.png" alt="Articles 2" width="468" height="300">
