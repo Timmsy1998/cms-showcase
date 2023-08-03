@@ -12,7 +12,7 @@ class ArticleController extends Controller
     public function index()
     {
         // Retrieve all articles
-        $articles = Article::all();
+        $articles = Article::paginate(10);
 
         return view('articles.index', compact('articles'));
     }
@@ -90,5 +90,22 @@ class ArticleController extends Controller
         $article->delete();
 
         return redirect()->route('articles.index')->with('success', 'Article deleted successfully.');
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $articles = Article::where('title', 'like', '%' . $query . '%')
+            ->orWhere('content', 'like', '%' . $query . '%')
+            ->orWhereHas('categories', function ($q) use ($query) {
+                $q->where('name', 'like', '%' . $query . '%');
+            })
+            ->orWhereHas('tags', function ($q) use ($query) {
+                $q->where('name', 'like', '%' . $query . '%');
+            })
+            ->get();
+
+        return view('articles.index', compact('articles'));
     }
 }

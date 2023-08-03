@@ -16,12 +16,14 @@ use Illuminate\Support\Facades\Route;
 // Authentication Routes
 Auth::routes();
 
-// Home Route
-
+// Main Routes
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 // Article Routes
 Route::resource('articles', App\Http\Controllers\ArticleController::class);
+Route::get('/articles/search', [App\Http\Controllers\ArticleController::class, 'search'])->name('articles.search');
+
 
 // Category Routes
 Route::resource('categories', App\Http\Controllers\CategoryController::class);
