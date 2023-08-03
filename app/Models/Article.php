@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Article extends Model
 {
@@ -23,5 +24,15 @@ class Article extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Automatically generate the slug before saving the article
+        static::saving(function ($article) {
+            $article->slug = Str::slug($article->title);
+        });
     }
 }

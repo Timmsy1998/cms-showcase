@@ -6,6 +6,9 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Events\ArticleCreated;
+use App\Events\ArticleUpdated;
+use App\Events\ArticleDeleted;
 
 class ArticleController extends Controller
 {
@@ -46,6 +49,8 @@ class ArticleController extends Controller
         $article->user_id = Auth::user()->id; // Associate the article with the currently logged-in user
         $article->save();
 
+        event(new ArticleCreated($article));
+
         return redirect()->route('articles.index')->with('success', 'Article created successfully.');
     }
 
@@ -76,6 +81,8 @@ class ArticleController extends Controller
         $article->content = $request->input('content');
         $article->save();
 
+        event(new ArticleUpdated($article));
+
         return redirect()->route('articles.index')->with('success', 'Article updated successfully.');
     }
 
@@ -88,6 +95,8 @@ class ArticleController extends Controller
 
         // Delete the article
         $article->delete();
+
+        event(new ArticleDeleted($article));
 
         return redirect()->route('articles.index')->with('success', 'Article deleted successfully.');
     }
@@ -108,4 +117,5 @@ class ArticleController extends Controller
 
         return view('articles.index', compact('articles'));
     }
+
 }
